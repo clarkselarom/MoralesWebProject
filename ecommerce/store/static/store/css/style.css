@@ -1,0 +1,313 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('/static/store/images/bg.png');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+}
+
+/* Update the CSS to increase specificity */
+.navbar {
+    background-color: #d9f7d3;
+    border-bottom: 2px solid #347520;
+}
+
+.navbar-brand {
+    color: #285c18;
+    font-weight: bolder;
+    font-size: 24px;
+    font-family:'Courier New', Courier, monospace;
+    
+}
+.navbar-brand:hover {
+    color: #5fbb43;
+    
+}
+
+.navbar-nav .nav-link {
+    color: #285c18;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #6cb456;
+}
+
+.navbar-scrolled {
+    box-shadow: 0 4px 8px rgba(126, 100, 52, 0.1);
+}
+.navbar-nav .nav-item.active .nav-link {
+    background-color: #5bb458;
+}
+
+/* Admin Dashboard Styles */
+.table-responsive {
+    margin-top: 20px;
+    border: #62af78;
+}
+
+.table.custom-table th,
+.table.custom-table td {
+    text-align: center;
+    padding: 12px;
+}
+
+.table.custom-table th {
+    background-color: #97d692;
+    color: #175f12;
+}
+
+.table.custom-table td {
+    background-color: #475846;
+    color: white;
+}
+
+.table.custom-table img {
+    max-width: auto;
+    height: 100px;
+}
+
+.table.custom-table .btn-primary,
+.table.custom-table .btn-danger {
+    margin: 5px;
+}
+/* Styles for delete confirmation modal */
+.modal-content {
+    background-color: #fefefe;
+    padding: 80px;
+    border: 1px solid #888;
+    width: 500px;
+    text-align: center;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+}
+
+/* Custom Button Styles */
+.btn-primary {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: #13571c; /* Darker Green */
+}
+.btn-primary:active {
+    background-color: #0a2e0f; /* Even Darker Green */
+}
+
+.btn-danger {
+    background-color: #f44336; /* Red */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f; /* Darker Red */
+}
+
+/* Product List */
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.col-md-4 {
+    width: 100px; /* Adjust the width as needed */
+    margin-bottom: 20px;
+}
+
+.card {
+    border: 2px solid #705a30;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    background-color: #fff;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.product-image {
+    height: 100px; /* Adjust the height of the image */
+    width: 100px; /* Adjust the width of the image */
+    object-fit: cover;
+    margin: auto; /* Center the image horizontally */
+}
+
+.card-body {
+    padding: 10px;
+}
+
+
+/* Modal */
+.modal {
+    overflow-y: auto;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-success {
+    margin-top: 10px;
+}
+
+/* Admin Categories Styles */
+#category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.card {
+    border: 2px solid #705a30;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    background-color: #fff;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.product-image {
+    height: 100px; /* Adjust the height of the image */
+    width: 100px; /* Adjust the width of the image */
+    object-fit: cover;
+    margin: auto; /* Center the image horizontally */
+}
+
+/* Styles for delete confirmation modal */
+.modal-content {
+    background-color: #fefefe;
+    padding: 80px;
+    border: 1px solid #888;
+    width: 500px;
+    text-align: center;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #bd2130;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+#category-filter {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#category-filter::after {
+    content: '\25BC'; 
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+#category-filter option {
+    background-color: #fff;
+    color: #333;
+}
+/* LOGIN/SIGN UP*/
+form {
+    max-width: 400px;
+    margin: auto;
+    background-color: #82b882;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(126, 100, 52, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #0b460b;
+    font-weight: bolder;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #000000;
+    transition: border-color 0.3s ease;
+    
+}
+
+button {
+    background-color: #227c16;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #37992b;
+}
+
+form:hover {
+    box-shadow: 0 8px 16px rgba(90, 158, 88, 0.2);
+}
+
+input:focus {
+    border-color: #cc9d58;
+}

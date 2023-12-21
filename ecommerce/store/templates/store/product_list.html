@@ -1,0 +1,66 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <h1 style="text-align: center; color: white; font-weight: bolder;">Welcome to MorShop</h1>
+    <h2 style="color: white; font-weight: bolder;">Product List</h2>
+    <select name="category" id="category-filter">
+        <option value="">All Categories</option>
+        {% for category in categories %}
+            <option value="{{ category.id }}" {% if category == selected_category %}selected{% endif %}>{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    <div class="row" id="product-list">
+        {% for product in products %}
+            <div class="col-md-4 mb-4" data-category="{{ product.category.id }}">
+                <div class="card">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top product-image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">Price: ₱{{ product.price }}</p>
+                        <div class="d-flex flex-column">
+                            <a href="{% url 'product_detail' product.pk %}" class="btn-primary">
+                                View Details
+                            </a>
+                            <button type="button" class="btn btn-success btn-block buy-now" data-product-id="{{ product.id }}">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#category-filter').change(function () {
+                var selectedCategoryId = $(this).val();
+
+                if (selectedCategoryId) {
+                    $('#product-list .col-md-4').hide();
+                    $('#product-list .col-md-4[data-category="' + selectedCategoryId + '"]').show();
+                } else {
+                    $('#product-list .col-md-4').show();
+                }
+            });
+
+            $('.view-details').on('click', function () {
+                var modalId = $(this).data('target');
+                $(modalId).modal('show');
+            });
+
+            $('.buy-now').on('click', function () {
+                {% if user.is_authenticated %}
+                    var productName = $(this).closest('.card-body').find('.card-title').text();
+                    alert('Product purchased successfully: ' + productName);
+                {% else %}
+                    alert('You need to log in first.');
+                {% endif %}
+            });
+        });
+    </script>
+
+{% endblock %}

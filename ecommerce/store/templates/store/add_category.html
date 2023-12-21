@@ -1,0 +1,10 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data" action="{% url 'add_category' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Category</button>
+    </form>
+{% endblock %}
+

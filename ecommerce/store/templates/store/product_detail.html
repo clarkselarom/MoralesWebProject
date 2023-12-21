@@ -1,0 +1,26 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <h2 style = "color: white;font-weight: bolder">PRODUCT DETAILS</h2>
+    <div class="table-responsive">
+        <table class="table custom-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td><img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image"></td>
+                    <td>₱{{ product.price }}</td>
+                </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+    <h2 style = "color: white;font-weight: bolder">Admin Categories</h2>
+    <div class="table-responsive">
+        <table class="table custom-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.created_at }}</td>
+                    <td>
+                        <div "d-flex flex-column">
+                            <a href="{% url 'edit_category' category.pk %}" style= "backgroun-color: darkgreen" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="#" class="btn btn-danger btn-sm delete-category" style= "backgroun-color: darkgreen" data-category-id="{{ category.pk }}">Delete</a>
+                        </d>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+    <div id="deleteModal" class="modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Are you sure you want to delete this category?</p>
+                <button id="confirmDelete" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const deleteLinks = document.querySelectorAll('.delete-category');
+            const deleteModal = document.getElementById('deleteModal');
+            const confirmDeleteBtn = document.getElementById('confirmDelete');
+
+            deleteLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const productId = this.getAttribute('data-category-id');
+                    deleteModal.style.display = 'block';
+
+                    confirmDeleteBtn.onclick = function () {
+                        const form = document.createElement('form');
+                        form.method = 'post';
+                        form.action = '{% url "delete_category" 0 %}'.replace('0', productId);
+                        form.style.display = 'none';
+
+                        const csrfInput = document.createElement('input');
+                        csrfInput.type = 'hidden';
+                        csrfInput.name = 'csrfmiddlewaretoken';
+                        csrfInput.value = '{{ csrf_token }}';
+
+                        const methodInput = document.createElement('input');
+                        methodInput.type = 'hidden';
+                        methodInput.name = 'method';
+                        methodInput.value = 'delete';
+
+                        form.appendChild(csrfInput);
+                        form.appendChild(methodInput);
+
+                        document.body.appendChild(form);
+                        form.submit();
+                    };
+                });
+            });
+
+            window.onclick = function (event) {
+                if (event.target === deleteModal || event.target.classList.contains('close')) {
+                    deleteModal.style.display = 'none';
+                }
+            };
+        });
+    </script>
+{% endblock %}
